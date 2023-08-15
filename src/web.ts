@@ -1,13 +1,12 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { MLKitBarcodeScannerPlugin } from './definitions';
+import type {MLKitBarcodeScannerPlugin, IOptions, IResult} from './definitions';
 
 export class MLKitBarcodeScannerWeb
   extends WebPlugin
   implements MLKitBarcodeScannerPlugin
 {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  async scan(_settings: IOptions): Promise<{ barcodes: IResult[] }> {
+    return Promise.reject("not supported");
   }
 }

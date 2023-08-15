@@ -2,7 +2,6 @@ package com.biso.capacitor.plugins.mlkit.barcode.scanner;
 
 import static com.biso.capacitor.plugins.mlkit.barcode.scanner.BarcodeAnalyzer.BARCODES;
 
-import android.app.Instrumentation.ActivityResult;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
@@ -15,6 +14,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.os.VibratorManager;
 import android.util.Log;
+import androidx.activity.result.ActivityResult;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -68,10 +68,9 @@ public class MLKitBarcodeScannerPlugin extends Plugin {
     public void scan(PluginCall call) {
         Intent intent = new Intent(context, CaptureActivity.class);
 
-        JSObject settings = call.getObject(SETTINGS, new JSObject());
+        JSObject settings = call.getData();
         scannerSettings = new ScannerSettings(settings);
         intent.putExtra(SETTINGS, scannerSettings);
-
         startActivityForResult(call, intent, "onScanResult");
     }
 
@@ -81,11 +80,15 @@ public class MLKitBarcodeScannerPlugin extends Plugin {
             return;
         }
         if (result.getResultCode() == CommonStatusCodes.SUCCESS) {
-            Intent data = result.getResultData();
+            Intent data = result.getData();
             if (data != null) {
                 JSObject detectedBarcodes = new JSObject();
                 try {
                     ArrayList<DetectedBarcode> barcodes = data.getParcelableArrayListExtra(BARCODES);
+                    if (barcodes.isEmpty()) {
+                        call.reject("NO_BARCODE");
+                        return;
+                    }
                     JSONArray resultBarcodes = new JSONArray();
                     for (DetectedBarcode barcode : barcodes) {
                         Log.d("MLKitBarcodeScanner", "Barcode read: " + barcode);
@@ -107,9 +110,11 @@ public class MLKitBarcodeScannerPlugin extends Plugin {
                         VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE));
                 }
                 call.resolve(detectedBarcodes);
+                return;
             }
+            call.reject("CANCELED");
         } else {
-            String err = result.getResultData().getStringExtra("error");
+            String err = result.getData().getStringExtra("error");
             call.reject(err);
         }
     }

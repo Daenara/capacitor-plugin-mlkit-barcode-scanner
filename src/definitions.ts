@@ -39,7 +39,7 @@ export interface IOptions {
 
 export interface IResult {
   value: string;
-  format: number;
-  type: number;
+  format: string;
+  type: string;
   distanceToCenter: number;
 }

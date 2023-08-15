@@ -24,19 +24,29 @@ npx cap sync
 ### scan(...)
 
 ```typescript
-scan(settings: IOptions) => Promise<{ value: string; }>
+scan(settings: IOptions) => Promise<{ barcodes: IResult[]; }>
 ```
 
 | Param          | Type                                          |
 | -------------- | --------------------------------------------- |
 | **`settings`** | <code><a href="#ioptions">IOptions</a></code> |
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** <code>Promise&lt;{ barcodes: IResult[]; }&gt;</code>
 
 --------------------
 
 
 ### Interfaces
+
+
+#### IResult
+
+| Prop                   | Type                |
+| ---------------------- | ------------------- |
+| **`value`**            | <code>string</code> |
+| **`format`**           | <code>string</code> |
+| **`type`**             | <code>string</code> |
+| **`distanceToCenter`** | <code>number</code> |
 
 
 #### IOptions

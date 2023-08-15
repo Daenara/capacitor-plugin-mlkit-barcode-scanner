@@ -1,6 +1,8 @@
 package com.biso.capacitor.plugins.mlkit.barcode.scanner;
 
 import android.graphics.RectF;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
@@ -48,7 +50,11 @@ public class DetectedBarcode implements Parcelable, Comparable<DetectedBarcode> 
     type = in.readInt();
     distanceToCenter = in.readDouble();
     bounds = in.readTypedObject(RectF.CREATOR);
-    isPortrait = in.readBoolean();
+    if (VERSION.SDK_INT >= VERSION_CODES.Q) {
+      isPortrait = in.readBoolean();
+    } else {
+      isPortrait = in.readInt() == 1;
+    }
   }
 
   public boolean isInScanArea(RectF scanArea, boolean ignoreRotated) {
@@ -140,15 +146,19 @@ public class DetectedBarcode implements Parcelable, Comparable<DetectedBarcode> 
     out.writeInt(type);
     out.writeDouble(distanceToCenter);
     out.writeTypedObject(bounds, Parcelable.PARCELABLE_WRITE_RETURN_VALUE);
-    out.writeBoolean(isPortrait);
+    if (VERSION.SDK_INT >= VERSION_CODES.Q) {
+      out.writeBoolean(isPortrait);
+    } else {
+      out.writeInt(isPortrait ? 1 : 0);
+    }
   }
 
   public JSONObject getAsJson() throws JSONException {
     JSONObject result = new JSONObject();
       result.put("value", getValue());
-      result.put("format", getFormat());
-      result.put("type", getType());
-      result.put("distanceToCenter", getDistanceToCenter());
+      result.put("format", BarcodeFormat.getFromInt(getFormat()));
+      result.put("type", BarcodeType.getFromInt(getType()));
+      result.put("distanceToCenter", (double) Math.round(getDistanceToCenter()*100)/100);
     return result;
   }
 

@@ -5,7 +5,9 @@ import static com.biso.capacitor.plugins.mlkit.barcode.scanner.Utils.getAspectRa
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.JsonReader;
 import android.util.Log;
+import com.getcapacitor.JSObject;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
@@ -33,6 +35,8 @@ public class ScannerSettings implements Parcelable {
   private boolean ignoreRotatedBarcodes = false;
 
   public ScannerSettings(JSONObject settings) {
+    BarcodeFormats formats = new BarcodeFormats(settings.optJSONObject(BARCODE_FORMATS.value()));
+    barcodeFormats = formats.getFormatFlags();
     Iterator<String> keys = settings.keys();
 
     while(keys.hasNext()) {
@@ -42,7 +46,6 @@ public class ScannerSettings implements Parcelable {
       if(setting.isPresent()) {
         switch (setting.get()) {
           case BARCODE_FORMATS:
-            barcodeFormats = settings.optInt(BARCODE_FORMATS.value(), getBarcodeFormats());
             break;
           case DETECTOR_ASPECT_RATIO:
             aspectRatio = settings.optString(DETECTOR_ASPECT_RATIO.value(), getAspectRatio());

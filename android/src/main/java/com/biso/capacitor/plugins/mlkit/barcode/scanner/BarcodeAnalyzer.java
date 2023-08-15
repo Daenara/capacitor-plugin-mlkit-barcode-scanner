@@ -3,6 +3,7 @@ package com.biso.capacitor.plugins.mlkit.barcode.scanner;
 import static com.biso.capacitor.plugins.mlkit.barcode.scanner.Utils.getTranslationMatrix;
 import static com.biso.capacitor.plugins.mlkit.barcode.scanner.Utils.mapRect;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Matrix;
 import android.graphics.RectF;
@@ -21,6 +22,7 @@ import com.google.mlkit.vision.barcode.BarcodeScanning;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -53,17 +55,14 @@ public class BarcodeAnalyzer implements Analyzer {
   }
 
   @Override
-  @OptIn(markerClass = ExperimentalGetImage.class)
   public void analyze(@NonNull ImageProxy imageProxy) {
+    @SuppressLint("UnsafeOptInUsageError")
     Image image = imageProxy.getImage();
     if (image == null) {
       imageProxy.close();
       return;
     }
-
-    InputImage inputImage = InputImage.fromMediaImage(image,
-        imageProxy.getImageInfo().getRotationDegrees());
-
+    InputImage inputImage = InputImage.fromMediaImage(image, imageProxy.getImageInfo().getRotationDegrees());
     Task<List<Barcode>> scannerTask = scanner.process(inputImage);
     try {
       List<Barcode> barcodes = Tasks.await(scannerTask);

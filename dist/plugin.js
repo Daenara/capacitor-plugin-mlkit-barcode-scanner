@@ -7,7 +7,7 @@ var capacitorMLKitBarcodeScanner = (function (exports, core) {
 
     class MLKitBarcodeScannerWeb extends core.WebPlugin {
         async scan(_settings) {
-            return Promise.reject("PLATFORM_NOT_SUPPORTED");
+            return Promise.reject(new Error("PLATFORM_NOT_SUPPORTED"));
         }
     }
 

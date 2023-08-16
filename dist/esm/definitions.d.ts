@@ -2,15 +2,13 @@ export interface MLKitBarcodeScannerPlugin {
     /**
      * Opens a camera preview for barcode scanning and automatically detects barcodes in the scan area.
      * In case of unsuccessful scan the reason is thrown as an error.
-     * <br>
-     * <b>Possible errors:</b>
-     * <ul>
-     *   <li>CANCELED</li>
-     *   <li>NO_CAMERA</li>
-     *   <li>NO_CAMERA_PERMISSION</li>
-     *   <li>JSON_EXCEPTION</li>
-     *   <li>PLATFORM_NOT_SUPPORTED</li>
-     * </ul>
+     *
+     * __Possible errors:__
+     *   * CANCELED
+     *   * NO_CAMERA
+     *   * NO_CAMERA_PERMISSION
+     *   * JSON_EXCEPTION
+     *   * PLATFORM_NOT_SUPPORTED
      * @param settings{ISettings} settings to be used for the scan
      */
     scan(settings: ISettings): Promise<IResult>;

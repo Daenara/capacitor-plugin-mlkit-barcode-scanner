@@ -1,5 +1,5 @@
 {
-  "name": "mlkit-barcode-scanner",
+  "name": "capacitor-plugin-mlkit-barcode-scanner",
   "version": "0.0.1",
   "description": "Google MLKit Vision Barcode Scanner Plugin",
   "main": "dist/plugin.cjs.js",

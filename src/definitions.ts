@@ -1,7 +1,24 @@
 export interface MLKitBarcodeScannerPlugin {
-  scan(settings: IOptions): Promise<{ barcodes: IResult[] }>;
+  /**
+   * Opens a camera preview for barcode scanning and automatically detects barcodes in the scan area.
+   * In case of unsuccessful scan the reason is thrown as an error.
+   * <br>
+   * <b>Possible errors:</b>
+   * <ul>
+   *   <li>CANCELED</li>
+   *   <li>NO_CAMERA</li>
+   *   <li>NO_CAMERA_PERMISSION</li>
+   *   <li>JSON_EXCEPTION</li>
+   *   <li>PLATFORM_NOT_SUPPORTED</li>
+   * </ul>
+   * @param settings{ISettings} settings to be used for the scan
+   */
+  scan(settings: ISettings): Promise<IResult>;
 }
 
+/**
+ * Options to make it possible to narrow down the barcode types scanned.
+ */
 export interface IBarcodeFormats {
   Aztec: boolean;
   CodaBar: boolean;
@@ -18,7 +35,13 @@ export interface IBarcodeFormats {
   UPCE: boolean;
 }
 
-export interface IOptions {
+/**
+ * All settings that can be passed to the plugin. The `detectorSize` value must be between
+ * `0` and `1`, because it determines how many percent of the screen should be covered by
+ * the detector.
+ * If the value is greater than 1 the detector will not be visible on the screen.
+ */
+export interface ISettings {
   barcodeFormats?: IBarcodeFormats;
   beepOnSuccess?: boolean;
   vibrateOnSuccess?: boolean;
@@ -37,9 +60,16 @@ export interface IOptions {
   debugOverlay?: boolean;
 }
 
+/**
+ * The result of the plugin is an object with a list of detected barcodes, sorted by
+ * distanceToCenter with the lowest value being first. DistanceToCenter is calculated by how
+ * far away the center of the barcode is from the center of the scan area.
+ */
 export interface IResult {
-  value: string;
-  format: string;
-  type: string;
-  distanceToCenter: number;
+  barcodes: [{
+    value: string;
+    format: string;
+    type: string;
+    distanceToCenter: number;
+  }]
 }

@@ -6,7 +6,7 @@ This is a capacitor port of [bi-so-gmbh / cordova-plugin-mlkit-barcode-scanner](
 ## Install
 
 ```bash
-npm install mlkit-barcode-scanner
+npm install https://github.com/bi-so-gmbh/capacitor-plugin-mlkit-barcode-scanner.git
 npx cap sync
 ```
 

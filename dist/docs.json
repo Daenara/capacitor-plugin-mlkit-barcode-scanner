@@ -1,0 +1,279 @@
+{
+  "api": {
+    "name": "MLKitBarcodeScannerPlugin",
+    "slug": "mlkitbarcodescannerplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "scan",
+        "signature": "(settings: ISettings) => Promise<IResult>",
+        "parameters": [
+          {
+            "name": "settings",
+            "docs": "settings to be used for the scan",
+            "type": "ISettings"
+          }
+        ],
+        "returns": "Promise<IResult>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "settings settings to be used for the scan"
+          }
+        ],
+        "docs": "Opens a camera preview for barcode scanning and automatically detects barcodes in the scan area.\nIn case of unsuccessful scan the reason is thrown as an error.\n<br>\n<b>Possible errors:</b>\n<ul>\n  <li>CANCELED</li>\n  <li>NO_CAMERA</li>\n  <li>NO_CAMERA_PERMISSION</li>\n  <li>JSON_EXCEPTION</li>\n  <li>PLATFORM_NOT_SUPPORTED</li>\n</ul>",
+        "complexTypes": [
+          "IResult",
+          "ISettings"
+        ],
+        "slug": "scan"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "IResult",
+      "slug": "iresult",
+      "docs": "The result of the plugin is an object with a list of detected barcodes, sorted by\ndistanceToCenter with the lowest value being first. DistanceToCenter is calculated by how\nfar away the center of the barcode is from the center of the scan area.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "barcodes",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "[{ value: string; format: string; type: string; distanceToCenter: number; }]"
+        }
+      ]
+    },
+    {
+      "name": "ISettings",
+      "slug": "isettings",
+      "docs": "All settings that can be passed to the plugin. The `detectorSize` value must be between\n`0` and `1`, because it determines how many percent of the screen should be covered by\nthe detector.\nIf the value is greater than 1 the detector will not be visible on the screen.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "barcodeFormats",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "IBarcodeFormats"
+          ],
+          "type": "IBarcodeFormats"
+        },
+        {
+          "name": "beepOnSuccess",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "vibrateOnSuccess",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "detectorSize",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "detectorAspectRatio",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "drawFocusRect",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "focusRectColor",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "focusRectBorderRadius",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "focusRectBorderThickness",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "drawFocusLine",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "focusLineColor",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "focusLineThickness",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "drawFocusBackground",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "focusBackgroundColor",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "stableThreshold",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "debugOverlay",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        }
+      ]
+    },
+    {
+      "name": "IBarcodeFormats",
+      "slug": "ibarcodeformats",
+      "docs": "Options to make it possible to narrow down the barcode types scanned.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "Aztec",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "CodaBar",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "Code39",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "Code93",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "Code128",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "DataMatrix",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "EAN8",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "EAN13",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "ITF",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "PDF417",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "QRCode",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "UPCA",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "UPCE",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [],
+  "pluginConfigs": []
+}

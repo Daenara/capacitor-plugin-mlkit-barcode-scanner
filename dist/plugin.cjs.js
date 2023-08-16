@@ -10,7 +10,7 @@ const MLKitBarcodeScanner = core.registerPlugin('MLKitBarcodeScanner', {
 
 class MLKitBarcodeScannerWeb extends core.WebPlugin {
     async scan(_settings) {
-        return Promise.reject("not supported");
+        return Promise.reject("PLATFORM_NOT_SUPPORTED");
     }
 }
 

@@ -22,7 +22,7 @@
             "text": "settings settings to be used for the scan"
           }
         ],
-        "docs": "Opens a camera preview for barcode scanning and automatically detects barcodes in the scan area.\nIn case of unsuccessful scan the reason is thrown as an error.\n<br>\n<b>Possible errors:</b>\n<ul>\n  <li>CANCELED</li>\n  <li>NO_CAMERA</li>\n  <li>NO_CAMERA_PERMISSION</li>\n  <li>JSON_EXCEPTION</li>\n  <li>PLATFORM_NOT_SUPPORTED</li>\n</ul>",
+        "docs": "Opens a camera preview for barcode scanning and automatically detects barcodes in the scan area.\nIn case of unsuccessful scan the reason is thrown as an error.\n\n__Possible errors:__\n  * CANCELED\n  * NO_CAMERA\n  * NO_CAMERA_PERMISSION\n  * JSON_EXCEPTION\n  * PLATFORM_NOT_SUPPORTED",
         "complexTypes": [
           "IResult",
           "ISettings"

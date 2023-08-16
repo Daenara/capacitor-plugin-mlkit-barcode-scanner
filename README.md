@@ -111,15 +111,13 @@ scan(settings: ISettings) => Promise<IResult>
 
 Opens a camera preview for barcode scanning and automatically detects barcodes in the scan area.
 In case of unsuccessful scan the reason is thrown as an error.
-&lt;br&gt;
-&lt;b&gt;Possible errors:&lt;/b&gt;
-&lt;ul&gt;
-  &lt;li&gt;CANCELED&lt;/li&gt;
-  &lt;li&gt;NO_CAMERA&lt;/li&gt;
-  &lt;li&gt;NO_CAMERA_PERMISSION&lt;/li&gt;
-  &lt;li&gt;JSON_EXCEPTION&lt;/li&gt;
-  &lt;li&gt;PLATFORM_NOT_SUPPORTED&lt;/li&gt;
-&lt;/ul&gt;
+
+__Possible errors:__
+  * CANCELED
+  * NO_CAMERA
+  * NO_CAMERA_PERMISSION
+  * JSON_EXCEPTION
+  * PLATFORM_NOT_SUPPORTED
 
 | Param          | Type                                            | Description                      |
 | -------------- | ----------------------------------------------- | -------------------------------- |

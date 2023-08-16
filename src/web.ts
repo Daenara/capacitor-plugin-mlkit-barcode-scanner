@@ -7,6 +7,6 @@ export class MLKitBarcodeScannerWeb
   implements MLKitBarcodeScannerPlugin
 {
   async scan(_settings: ISettings): Promise<IResult> {
-    return Promise.reject("PLATFORM_NOT_SUPPORTED");
+    return Promise.reject(new Error("PLATFORM_NOT_SUPPORTED"));
   }
 }

@@ -1,4 +1,4 @@
-import MLKit
+import MLKitBarcodeScanning
 
 class DetectedBarcode: Hashable, Equatable, CustomDebugStringConvertible {
 

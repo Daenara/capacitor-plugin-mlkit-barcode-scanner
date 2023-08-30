@@ -2,7 +2,7 @@ import UIKit
 import SwiftUI
 import AVFoundation
 import MLImage
-import MLKit
+import MLKitVision
 
 protocol CameraViewControllerDelegate: NSObjectProtocol {
   func onComplete(_ result: [DetectedBarcode])
@@ -143,7 +143,7 @@ class CameraViewController: UIViewController, BarcodesListener {
         torchButton.tintColor = UIColor.black
         torchButton.alpha = 0.5
         torchButton.addTarget(self, action: #selector(toggleFlash), for: UIControl.Event.touchUpInside)
-        if let image = UIImage(named: "flashlight.png")
+        if let image = UIImage(named: "flashlight")
         {
           torchButton.setImage(image, for: UIControl.State.normal)
         }

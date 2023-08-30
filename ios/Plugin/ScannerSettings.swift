@@ -1,3 +1,5 @@
+import UIKit
+import MLKitBarcodeScanning
 
 class ScannerSettings: CustomDebugStringConvertible {
   var debugDescription: String {
@@ -39,13 +41,11 @@ class ScannerSettings: CustomDebugStringConvertible {
   public private(set) var ignoreRotatedBarcodes: Bool = false
 
   init(options:[String:Any]) {
+      let bFormats: [String:Any] = options[Settings.BARCODE_FORMATS] as! [String:Any]
+      let formats:BarcodeFormats = BarcodeFormats(barcodeFormats: bFormats)
+      barcodeFormats = formats.getFormatFlags()
     for (key, value) in options {
       switch (key) {
-      case Settings.BARCODE_FORMATS:
-        if let temp = Utils.getInt(input: value) {
-          barcodeFormats = temp
-        }
-        break
       case Settings.DETECTOR_ASPECT_RATIO:
         if let temp = value as? String {
           aspectRatio = temp

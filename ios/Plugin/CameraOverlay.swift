@@ -1,6 +1,5 @@
 import AVFoundation
 import CoreVideo
-import MLKit
 import UIKit
 
 class CameraOverlay: UIView {
@@ -67,7 +66,7 @@ class CameraOverlay: UIView {
         rectangleView.layer.borderWidth = 2
         addSubview(rectangleView)
 
-        var lineView = UIView(frame: barcode.getCenterLine())
+        let lineView = UIView(frame: barcode.getCenterLine())
 
         lineView.layer.borderColor = UIColor.red.cgColor
         lineView.layer.borderWidth = 2

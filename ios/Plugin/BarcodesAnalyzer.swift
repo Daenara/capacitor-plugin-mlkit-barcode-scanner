@@ -1,5 +1,5 @@
-import MLImage
-import MLKit
+import MLKitBarcodeScanning
+import MLKitVision
 
 protocol BarcodesListener: NSObjectProtocol {
   func onBarcodesFound(_ barcodes: [DetectedBarcode])

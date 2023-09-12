@@ -204,3 +204,7 @@ Another MLKit "feature". Happens especially often on ITF barcodes because the ba
 ### Barcode detection doesn't detect all barcodes
 
 More MLKit issues. When having multiple barcodes on screen, not all of them are detected all the time. If you are wondering why some barcodes are missing, activate `debugOverlay` and you will see which barcodes MLKIt found.
+
+### [Android] Torch Button is behind the drawn background
+
+On android, I use a SurfaceView to draw the overlay, including the full background, on. The only way to get this to be transparent so the camera can be seen behind it is to use ```setZOrderOnTop(true)``` on it, which makes it impossible for the button to be shown over it. This becomes a problem when a (nearly) opaque background is selected because then the button can't be seen anymore. NOTE: The button still works, it is just rendered behind the background.

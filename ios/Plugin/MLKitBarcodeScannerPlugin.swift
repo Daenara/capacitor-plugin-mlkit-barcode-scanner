@@ -34,18 +34,16 @@ public class MLKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate 
             AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
         }
         if(settings.beepOnSuccess) {
-            if let path = Bundle.main.path(forResource: "beep", ofType: "mp3")
-            {
+            if let audioData = NSDataAsset(name: "beep")?.data {
                 do {
                     try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
                     try AVAudioSession.sharedInstance().setActive(true)
                     
-                    player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path), fileTypeHint: AVFileType.mp3.rawValue)
+                    player = try AVAudioPlayer(data: audioData)
                     
                     if let unwrappedPlayer = player {
                         unwrappedPlayer.play()
                     }
-                    
                 } catch let error {
                     print(error.localizedDescription)
                 }

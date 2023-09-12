@@ -32,4 +32,14 @@ public enum BarcodeFormat: String, CaseIterable {
         case BarcodeFormat.AZTEC: return MLKitBarcodeScanning.BarcodeFormat.aztec.rawValue
         }
     }
+    
+    static func getFromInt(intValue: Int) -> BarcodeFormat? {
+        for barcodeFormat in BarcodeFormat.allCases {
+            if (barcodeFormat.asInt == intValue) {
+                return barcodeFormat
+            }
+        }
+        print("no BarcodeFormat found for value ", intValue)
+        return nil
+    }
 }

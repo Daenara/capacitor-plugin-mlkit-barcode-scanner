@@ -49,8 +49,12 @@ public class MLKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate 
                 }
             }
         }
+        var resultBarcodes: [[String: Any]] = []
+        for detectedBarcode in result {
+            resultBarcodes.append(detectedBarcode.outputAsDictionary())
+        }
         var output = JSObject()
-        output.updateValue(result, forKey: "barcodes")
+        output.updateValue(resultBarcodes, forKey: "barcodes")
         self.call!.resolve(output)
     }
     

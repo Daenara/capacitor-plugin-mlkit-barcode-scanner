@@ -60,6 +60,11 @@ class DetectedBarcode: Hashable, Equatable, CustomDebugStringConvertible {
     }
     
     public func outputAsDictionary() -> [String: Any] {
-        return ["value": value, "type": barcodeType, "format": format, "distanceToCenter": distanceToCenter]
+        return [
+            "value": value,
+            "type": BarcodeType.getFromInt(intValue: barcodeType)!.rawValue,
+            "format": BarcodeFormat.getFromInt(intValue: format)!.rawValue,
+            "distanceToCenter": round(distanceToCenter*100)/100.0
+        ]
     }
 }

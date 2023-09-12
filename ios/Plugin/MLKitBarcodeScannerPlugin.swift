@@ -4,7 +4,7 @@ import AVFoundation
 
 @objc(MLKitBarcodeScannerPlugin)
 public class MLKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate {
-    private var call:CAPPluginCall?
+    private var call: CAPPluginCall?
     private var settings: ScannerSettings!
     private var player: AVAudioPlayer?
     
@@ -29,6 +29,10 @@ public class MLKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate 
                 return
             }
             self.bridge!.viewController!.dismiss(animated: true)
+        }
+        if (result.isEmpty) {
+            self.call!.reject("NO_BARCODE")
+            return
         }
         if (settings.vibrateOnSuccess) {
             AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }

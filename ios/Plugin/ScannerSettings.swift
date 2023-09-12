@@ -18,7 +18,7 @@ class ScannerSettings: CustomDebugStringConvertible {
   // same with corner radius, way less pronounced on android
   private static var CORNER_RADIUS_ADJUSTMENT = -5
 
-  public private(set) var barcodeFormats: Int = 1234
+  public private(set) var barcodeFormats: Int = 0
   public private(set) var aspectRatio: String = "1:1"
   public private(set) var aspectRatioF: Float
   public private(set) var detectorSize: Double = 0.5
@@ -41,11 +41,19 @@ class ScannerSettings: CustomDebugStringConvertible {
   public private(set) var ignoreRotatedBarcodes: Bool = false
 
   init(options:[String:Any]) {
-      let bFormats: [String:Any] = options[Settings.BARCODE_FORMATS] as! [String:Any]
+      var bFormats: [String:Any]
+      if let unwrapped: [String:Any] = options[Settings.BARCODE_FORMATS] as? [String:Any] {
+          bFormats = unwrapped
+      } else {
+          bFormats = [String:Any]()
+      }
       let formats:BarcodeFormats = BarcodeFormats(barcodeFormats: bFormats)
       barcodeFormats = formats.getFormatFlags()
+      
     for (key, value) in options {
       switch (key) {
+      case Settings.BARCODE_FORMATS:
+          break
       case Settings.DETECTOR_ASPECT_RATIO:
         if let temp = value as? String {
           aspectRatio = temp

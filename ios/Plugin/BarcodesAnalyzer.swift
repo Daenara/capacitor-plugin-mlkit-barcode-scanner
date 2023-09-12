@@ -16,11 +16,7 @@ class BarcodeAnalyzer {
   private var stableCounter: Int = 0
 
   init(settings: ScannerSettings, barcodesListener: BarcodesListener, cameraOverlay:CameraOverlay) {
-    var useBarcodeFormats = settings.barcodeFormats
-    if (useBarcodeFormats == 0 || useBarcodeFormats == 1234) {
-      useBarcodeFormats = BarcodeFormat.code39.rawValue | BarcodeFormat.dataMatrix.rawValue;
-    }
-    let barcodeFormats = BarcodeFormat(rawValue: useBarcodeFormats)
+    let barcodeFormats = MLKitBarcodeScanning.BarcodeFormat(rawValue: settings.barcodeFormats)
     scanner = BarcodeScanner.barcodeScanner(options: BarcodeScannerOptions(formats: barcodeFormats))
     self.cameraOverlay = cameraOverlay
     self.barcodesListener = barcodesListener

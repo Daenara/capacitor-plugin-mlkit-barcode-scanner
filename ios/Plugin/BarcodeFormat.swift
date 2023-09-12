@@ -1,23 +1,44 @@
 import MLKitBarcodeScanning
 
-public enum BarcodeFormat: Int, CaseIterable {
-    case CODE_128 = MLKitBarcodeScanning.BarcodeFormat.code128.rawValue
-    case CODE_39 = MLKitBarcodeScanning.BarcodeFormat.code39.rawValue;
-    static let CODE_93 = MLKitBarcodeScanning.BarcodeFormat.code93.rawValue;
-    static let CODA_BAR = MLKitBarcodeScanning.BarcodeFormat.codaBar.rawValue;
-    static let DATA_MATRIXt = MLKitBarcodeScanning.BarcodeFormat.dataMatrix.rawValue;
-    static let EAN_13 = MLKitBarcodeScanning.BarcodeFormat.EAN13.rawValue;
-    static let EAN_8 = MLKitBarcodeScanning.BarcodeFormat.EAN8.rawValue;
-    static let ITF = MLKitBarcodeScanning.BarcodeFormat.ITF.rawValue;
-    static let QR_CODE = MLKitBarcodeScanning.BarcodeFormat.qrCode.rawValue;
-    static let UPC_A = MLKitBarcodeScanning.BarcodeFormat.UPCA.rawValue;
-    static let UPC_E = MLKitBarcodeScanning.BarcodeFormat.UPCE.rawValue;
-    static let DF417 = MLKitBarcodeScanning.BarcodeFormat.PDF417.rawValue;
-    static let AZTEC = MLKitBarcodeScanning.BarcodeFormat.aztec.rawValue;
+public enum BarcodeFormat: String, CaseIterable {
+    case CODE_128
+    case CODE_39
+    case CODE_93
+    case CODA_BAR
+    case DATA_MATRIXt
+    case EAN_13
+    case EAN_8
+    case ITF
+    case QR_CODE
+    case UPC_A
+    case UPC_E
+    case DF417
+    case AZTEC
     
-    static func getString(barcodeFormat: BarcodeFormat) -> String {
-        switch(barcodeFormat) {
-        case BarcodeFormat.CODE_128.rawValue: return "CODE_128"
+    var asInt: Int {
+        switch self {
+            case BarcodeFormat.CODE_128: return MLKitBarcodeScanning.BarcodeFormat.code128.rawValue
+            case BarcodeFormat.CODE_39: return MLKitBarcodeScanning.BarcodeFormat.code39.rawValue
+            case BarcodeFormat.CODE_93: return MLKitBarcodeScanning.BarcodeFormat.code93.rawValue
+            case BarcodeFormat.CODA_BAR: return MLKitBarcodeScanning.BarcodeFormat.codaBar.rawValue
+            case BarcodeFormat.DATA_MATRIXt: return MLKitBarcodeScanning.BarcodeFormat.dataMatrix.rawValue
+            case BarcodeFormat.EAN_13: return MLKitBarcodeScanning.BarcodeFormat.EAN13.rawValue
+            case BarcodeFormat.EAN_8: return MLKitBarcodeScanning.BarcodeFormat.EAN8.rawValue
+            case BarcodeFormat.ITF: return MLKitBarcodeScanning.BarcodeFormat.ITF.rawValue
+            case BarcodeFormat.QR_CODE: return MLKitBarcodeScanning.BarcodeFormat.qrCode.rawValue
+            case BarcodeFormat.UPC_A: return MLKitBarcodeScanning.BarcodeFormat.UPCA.rawValue
+            case BarcodeFormat.UPC_E: return MLKitBarcodeScanning.BarcodeFormat.UPCE.rawValue
+            case BarcodeFormat.DF417: return MLKitBarcodeScanning.BarcodeFormat.PDF417.rawValue
+            case BarcodeFormat.AZTEC: return MLKitBarcodeScanning.BarcodeFormat.aztec.rawValue
         }
     }
+    
+    /*static func getFromInt(intValue: Int) -> BarcodeFormat {
+        for barcodeFromat in BarcodeFormat.allCases {
+            if (barcodeFromat.asInt == intValue) {
+                return barcodeFromat
+            }
+        }
+        
+    }*/
 }

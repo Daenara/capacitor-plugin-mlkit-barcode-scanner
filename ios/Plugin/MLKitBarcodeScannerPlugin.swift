@@ -30,10 +30,10 @@ public class MLKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate 
             }
             self.bridge!.viewController!.dismiss(animated: true)
         }
-        if(settings.vibrateOnSuccess) {
+        if (settings.vibrateOnSuccess) {
             AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
         }
-        if(settings.beepOnSuccess) {
+        if (settings.beepOnSuccess) {
             if let audioData = NSDataAsset(name: "beep")?.data {
                 do {
                     try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)

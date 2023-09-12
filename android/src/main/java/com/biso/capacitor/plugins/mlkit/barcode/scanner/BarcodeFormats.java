@@ -14,7 +14,7 @@ public class BarcodeFormats {
       barcodeFormats = new JSObject();
     }
     for (BarcodeFormat value : BarcodeFormat.values()) {
-      boolean format = barcodeFormats.optBoolean(String.valueOf(value), true);
+      boolean format = barcodeFormats.optBoolean(String.valueOf(value), barcodeFormats.length() == 0);
       formats.put(String.valueOf(value), format);
     }
   }

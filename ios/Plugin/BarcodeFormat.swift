@@ -5,7 +5,7 @@ public enum BarcodeFormat: String, CaseIterable {
     case CODE_39
     case CODE_93
     case CODA_BAR
-    case DATA_MATRIXt
+    case DATA_MATRIX
     case EAN_13
     case EAN_8
     case ITF
@@ -21,7 +21,7 @@ public enum BarcodeFormat: String, CaseIterable {
         case BarcodeFormat.CODE_39: return MLKitBarcodeScanning.BarcodeFormat.code39.rawValue
         case BarcodeFormat.CODE_93: return MLKitBarcodeScanning.BarcodeFormat.code93.rawValue
         case BarcodeFormat.CODA_BAR: return MLKitBarcodeScanning.BarcodeFormat.codaBar.rawValue
-        case BarcodeFormat.DATA_MATRIXt: return MLKitBarcodeScanning.BarcodeFormat.dataMatrix.rawValue
+        case BarcodeFormat.DATA_MATRIX: return MLKitBarcodeScanning.BarcodeFormat.dataMatrix.rawValue
         case BarcodeFormat.EAN_13: return MLKitBarcodeScanning.BarcodeFormat.EAN13.rawValue
         case BarcodeFormat.EAN_8: return MLKitBarcodeScanning.BarcodeFormat.EAN8.rawValue
         case BarcodeFormat.ITF: return MLKitBarcodeScanning.BarcodeFormat.ITF.rawValue

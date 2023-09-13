@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "MlKitBarcodeScanner.podspec"
+    "MLKitBarcodeScanner.podspec"
   ],
   "author": "Nadine Seibel",
   "license": "MIT",

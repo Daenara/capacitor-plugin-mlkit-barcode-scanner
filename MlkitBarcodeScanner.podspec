@@ -15,7 +15,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target  = '13.0'
   s.dependency 'Capacitor'
   s.dependency 'GoogleMLKit/BarcodeScanning', '~> 4.0.0'
-  s.dependency 'GoogleMLKit', '~> 4.0.0'
   s.swift_version = '5.1'
   s.resources = [ 'ios/Plugin/**/*.xcassets']
 end

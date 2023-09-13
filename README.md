@@ -10,6 +10,22 @@ npm install https://github.com/bi-so-gmbh/capacitor-plugin-mlkit-barcode-scanner
 npx cap sync
 ```
 
+### Permissions
+
+#### IOS
+On IOS the camera permission needs to be added to the Info.plist of the project using the plugin.
+```
+<key>NSCameraUsageDescription</key>
+<string>Scan Barcodes</string>
+```
+
+#### Android
+On Android the permission has to be added in the AndroidManifest.xml of the project using the plugin.
+```
+<uses-feature android:name="android.hardware.camera" android:required="false"/>
+<uses-permission android:name="android.permission.CAMERA"/>
+```
+
 ## Barcode Support
 
 | 1d formats   | Android | iOS |
@@ -118,6 +134,7 @@ __Possible errors:__
   * NO_CAMERA_PERMISSION
   * JSON_EXCEPTION
   * PLATFORM_NOT_SUPPORTED
+  * UNKNOWN_ERROR (thrown on android in case an error without message happens, should never actually occur)
 
 | Param          | Type                                            | Description                      |
 | -------------- | ----------------------------------------------- | -------------------------------- |

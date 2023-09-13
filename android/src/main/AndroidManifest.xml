@@ -3,6 +3,6 @@
   <application android:hardwareAccelerated="true" android:supportsRtl="true">
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="barcode" />
-    <activity android:label="Read Barcode" android:name="com.biso.capacitor.plugins.mlkit.barcode.scanner.CaptureActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    <activity android:label="Read Barcode" android:name=".CaptureActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
   </application>
 </manifest>

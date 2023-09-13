@@ -72,10 +72,9 @@ public class CaptureActivity extends AppCompatActivity {
       settings = getIntent().getParcelableExtra(SETTINGS); // NOSONAR
     }
 
-    setContentView(getResources().getIdentifier("capture_activity", "layout", getPackageName()));
+    setContentView(R.layout.capture_activity);
     cameraOverlay = new CameraOverlay(this, settings);
-    ConstraintLayout constraintLayout = findViewById(
-        getResources().getIdentifier("topLayout", "id", getPackageName()));
+    ConstraintLayout constraintLayout = findViewById(R.id.topLayout);
     constraintLayout.addView(cameraOverlay);
 
     if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -84,16 +83,13 @@ public class CaptureActivity extends AppCompatActivity {
       requestPermissionLauncher.launch(permission.CAMERA);
     }
 
-    ImageButton torchButton = findViewById(
-        getResources().getIdentifier("torch_button", "id", getPackageName()));
+    ImageButton torchButton = findViewById(R.id.torch_button);
 
     torchButton.setOnClickListener(v -> {
       LiveData<Integer> flashState = camera.getCameraInfo().getTorchState();
       if (flashState.getValue() != null) {
         boolean state = flashState.getValue() == 1;
-        torchButton.setBackgroundResource(
-            getResources().getIdentifier(!state ? "torch_active" : "torch_inactive",
-                "drawable", CaptureActivity.this.getPackageName()));
+        torchButton.setBackgroundResource(!state ? R.drawable.torch_active : R.drawable.torch_inactive);
         camera.getCameraControl().enableTorch(!state);
       }
     });
@@ -118,8 +114,7 @@ public class CaptureActivity extends AppCompatActivity {
   }
 
   void startCamera() {
-    PreviewView previewView = findViewById(
-        getResources().getIdentifier("previewView", "id", getPackageName()));
+    PreviewView previewView = findViewById(R.id.previewView);
     previewView.setImplementationMode(PreviewView.ImplementationMode.COMPATIBLE);
 
     previewView.setScaleX(1F);

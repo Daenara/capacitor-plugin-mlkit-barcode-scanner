@@ -3,6 +3,7 @@ package com.biso.capacitor.plugins.mlkit.barcode.scanner;
 import static com.biso.capacitor.plugins.mlkit.barcode.scanner.MLKitBarcodeScannerPlugin.SETTINGS;
 
 import android.Manifest;
+import android.Manifest.permission;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,7 +14,8 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
-import androidx.annotation.NonNull;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.AspectRatio;
 import androidx.camera.core.Camera;
@@ -35,12 +37,19 @@ import java.util.concurrent.Executors;
 public class CaptureActivity extends AppCompatActivity {
 
   private final ExecutorService executor = Executors.newSingleThreadExecutor();
-  private static final int RC_HANDLE_CAMERA_PERM = 2;
   private Camera camera;
   private ScannerSettings settings;
   private CameraOverlay cameraOverlay;
-  private static final String[] PERMISSIONS = new String[]{Manifest.permission.CAMERA};
   private ImageAnalysis imageAnalysis;
+
+  private final ActivityResultLauncher<String> requestPermissionLauncher =
+      registerForActivityResult(new RequestPermission(), isGranted -> {
+        if (Boolean.TRUE.equals(isGranted)) {
+          startCamera();
+        } else {
+          finishWithError("NO_CAMERA_PERMISSION");
+        }
+      });
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +81,7 @@ public class CaptureActivity extends AppCompatActivity {
     if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
       startCamera();
     } else {
-      requestPermissions(PERMISSIONS, RC_HANDLE_CAMERA_PERM);
+      requestPermissionLauncher.launch(permission.CAMERA);
     }
 
     ImageButton torchButton = findViewById(
@@ -88,20 +97,6 @@ public class CaptureActivity extends AppCompatActivity {
         camera.getCameraControl().enableTorch(!state);
       }
     });
-  }
-
-  @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-      @NonNull int[] grantResults) {
-    if (requestCode == RC_HANDLE_CAMERA_PERM) {
-      if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        startCamera();
-        return;
-      }
-      finishWithError("NO_CAMERA_PERMISSION");
-    } else {
-      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
   }
 
   private void finishWithError(String errorMessage) {

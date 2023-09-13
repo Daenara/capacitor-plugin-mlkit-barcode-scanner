@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,7 +56,12 @@ public class CaptureActivity extends AppCompatActivity {
       finishWithError("NO_CAMERA");
     }
 
-    settings = getIntent().getParcelableExtra(SETTINGS);
+    if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
+      settings = getIntent().getParcelableExtra(SETTINGS, ScannerSettings.class);
+    } else {
+      // noinspection deprecation
+      settings = getIntent().getParcelableExtra(SETTINGS); // NOSONAR
+    }
 
     setContentView(getResources().getIdentifier("capture_activity", "layout", getPackageName()));
     cameraOverlay = new CameraOverlay(this, settings);
@@ -128,9 +136,10 @@ public class CaptureActivity extends AppCompatActivity {
       try {
         CaptureActivity.this.bindPreview(cameraProviderFuture.get(),
             previewView.getSurfaceProvider());
-      } catch (ExecutionException | InterruptedException e) {
+      } catch (ExecutionException | InterruptedException e) { // NOSONAR
         // No errors need to be handled for this Future.
         // This should never be reached.
+        Log.e("MLKitBarcodeScanner - Capture Activity", "Couldn't start camera");
       }
     }, ContextCompat.getMainExecutor(this));
   }

@@ -5,9 +5,7 @@ import static com.biso.capacitor.plugins.mlkit.barcode.scanner.Utils.getAspectRa
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.JsonReader;
 import android.util.Log;
-import com.getcapacitor.JSObject;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;

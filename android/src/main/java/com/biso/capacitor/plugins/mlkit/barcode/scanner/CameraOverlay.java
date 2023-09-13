@@ -14,6 +14,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import java.util.List;
+import org.json.JSONObject;
 
 public class CameraOverlay extends SurfaceView implements Callback {
 
@@ -28,6 +29,10 @@ public class CameraOverlay extends SurfaceView implements Callback {
     SurfaceHolder holder = getHolder();
     holder.setFormat(PixelFormat.TRANSPARENT);
     holder.addCallback(this);
+  }
+
+  public CameraOverlay(Context context) {
+    this(context, new ScannerSettings(new JSONObject()));
   }
 
   @Override
@@ -144,7 +149,8 @@ public class CameraOverlay extends SurfaceView implements Callback {
 
         paint.setColor(Color.parseColor("#FF0000"));
         RectF centerLine = barcode.getCenterLine();
-        canvas.drawLine(centerLine.left, centerLine.top, centerLine.right, centerLine.bottom, paint);
+        canvas.drawLine(centerLine.left, centerLine.top, centerLine.right, centerLine.bottom,
+            paint);
       }
 
       drawScanArea(canvas);

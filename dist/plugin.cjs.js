@@ -20,4 +20,5 @@ var web = /*#__PURE__*/Object.freeze({
 });
 
 exports.MlKitBarcodeScanner = MlKitBarcodeScanner;
+exports["default"] = MlKitBarcodeScanner;
 //# sourceMappingURL=plugin.cjs.js.map

@@ -11,3 +11,4 @@ const MlKitBarcodeScanner = registerPlugin<MlKitBarcodeScannerPlugin>(
 
 export * from './definitions';
 export { MlKitBarcodeScanner };
+export default MlKitBarcodeScanner;

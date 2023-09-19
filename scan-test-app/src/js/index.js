@@ -18,7 +18,7 @@
  */
 
 import {Capacitor} from '@capacitor/core'
-import {MLKitBarcodeScanner} from 'mlkit-barcode-scanner'
+import {MlKitBarcodeScanner} from 'capacitor-plugin-ml-kit-barcode-scanner'
 
 const options = {
   beepOnSuccess: false,
@@ -74,7 +74,7 @@ async function scan() {
   }
 
   try {
-    let result = await MLKitBarcodeScanner.scan(options)
+    let result = await MlKitBarcodeScanner.scan(options)
     console.log("result", result)
     onSuccess(result)
   } catch (error) {

@@ -16,7 +16,7 @@
     "@capacitor/android": "^5.0.0",
     "@capacitor/core": "latest",
     "@capacitor/ios": "^5.0.0",
-    "capacitor-plugin-mlkit-barcode-scanner": "file:.."
+    "capacitor-plugin-ml-kit-barcode-scanner": "file:.."
   },
   "devDependencies": {
     "@capacitor/cli": "latest",

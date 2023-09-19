@@ -17,7 +17,6 @@ var capacitorMlKitBarcodeScanner = (function (exports, core) {
     });
 
     exports.MlKitBarcodeScanner = MlKitBarcodeScanner;
-    exports["default"] = MlKitBarcodeScanner;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

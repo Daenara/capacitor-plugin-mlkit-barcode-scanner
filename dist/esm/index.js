@@ -4,5 +4,4 @@ const MlKitBarcodeScanner = registerPlugin('MlKitBarcodeScanner', {
 });
 export * from './definitions';
 export { MlKitBarcodeScanner };
-export default MlKitBarcodeScanner;
 //# sourceMappingURL=index.js.map

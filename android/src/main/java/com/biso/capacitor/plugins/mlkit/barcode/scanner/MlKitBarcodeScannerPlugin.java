@@ -27,8 +27,8 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-@CapacitorPlugin(name = "MLKitBarcodeScanner")
-public class MLKitBarcodeScannerPlugin extends Plugin {
+@CapacitorPlugin(name = "MlKitBarcodeScanner")
+public class MlKitBarcodeScannerPlugin extends Plugin {
 
   public static final String SETTINGS = "settings";
   private ScannerSettings scannerSettings;

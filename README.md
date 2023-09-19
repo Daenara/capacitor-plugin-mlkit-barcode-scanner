@@ -134,7 +134,6 @@ __Possible errors:__
   * NO_CAMERA_PERMISSION
   * JSON_EXCEPTION
   * PLATFORM_NOT_SUPPORTED
-  * UNKNOWN_ERROR (thrown on android in case an error without message happens, should never actually occur)
 
 | Param          | Type                                            | Description                      |
 | -------------- | ----------------------------------------------- | -------------------------------- |

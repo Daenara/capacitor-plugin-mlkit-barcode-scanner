@@ -1,6 +1,6 @@
 {
   "api": {
-    "name": "MLKitBarcodeScannerPlugin",
+    "name": "MlKitBarcodeScannerPlugin",
     "slug": "mlkitbarcodescannerplugin",
     "docs": "",
     "tags": [],

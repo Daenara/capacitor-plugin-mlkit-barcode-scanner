@@ -1,11 +1,11 @@
-var capacitorMLKitBarcodeScanner = (function (exports, core) {
+var capacitorMlKitBarcodeScanner = (function (exports, core) {
     'use strict';
 
-    const MLKitBarcodeScanner = core.registerPlugin('MLKitBarcodeScanner', {
-        web: () => Promise.resolve().then(function () { return web; }).then(m => new m.MLKitBarcodeScannerWeb()),
+    const MlKitBarcodeScanner = core.registerPlugin('MlKitBarcodeScanner', {
+        web: () => Promise.resolve().then(function () { return web; }).then(m => new m.MlKitBarcodeScannerWeb()),
     });
 
-    class MLKitBarcodeScannerWeb extends core.WebPlugin {
+    class MlKitBarcodeScannerWeb extends core.WebPlugin {
         async scan(_settings) {
             return Promise.reject(new Error("PLATFORM_NOT_SUPPORTED"));
         }
@@ -13,10 +13,10 @@ var capacitorMLKitBarcodeScanner = (function (exports, core) {
 
     var web = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        MLKitBarcodeScannerWeb: MLKitBarcodeScannerWeb
+        MlKitBarcodeScannerWeb: MlKitBarcodeScannerWeb
     });
 
-    exports.MLKitBarcodeScanner = MLKitBarcodeScanner;
+    exports.MlKitBarcodeScanner = MlKitBarcodeScanner;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

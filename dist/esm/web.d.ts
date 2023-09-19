@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import type { MLKitBarcodeScannerPlugin, ISettings, IResult } from './definitions';
-export declare class MLKitBarcodeScannerWeb extends WebPlugin implements MLKitBarcodeScannerPlugin {
+import type { MlKitBarcodeScannerPlugin, ISettings, IResult } from './definitions';
+export declare class MlKitBarcodeScannerWeb extends WebPlugin implements MlKitBarcodeScannerPlugin {
     scan(_settings: ISettings): Promise<IResult>;
 }

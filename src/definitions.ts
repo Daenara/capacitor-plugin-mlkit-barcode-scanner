@@ -1,4 +1,4 @@
-export interface MLKitBarcodeScannerPlugin {
+export interface MlKitBarcodeScannerPlugin {
   /**
    * Opens a camera preview for barcode scanning and automatically detects barcodes in the scan area.
    * In case of unsuccessful scan the reason is thrown as an error.

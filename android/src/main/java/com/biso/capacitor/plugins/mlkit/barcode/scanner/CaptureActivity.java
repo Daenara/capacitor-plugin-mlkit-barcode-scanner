@@ -1,6 +1,6 @@
 package com.biso.capacitor.plugins.mlkit.barcode.scanner;
 
-import static com.biso.capacitor.plugins.mlkit.barcode.scanner.MLKitBarcodeScannerPlugin.SETTINGS;
+import static com.biso.capacitor.plugins.mlkit.barcode.scanner.MlKitBarcodeScannerPlugin.SETTINGS;
 
 import android.Manifest;
 import android.Manifest.permission;

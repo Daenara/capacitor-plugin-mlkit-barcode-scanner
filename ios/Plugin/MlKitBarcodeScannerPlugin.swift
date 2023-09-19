@@ -2,8 +2,8 @@ import Foundation
 import Capacitor
 import AVFoundation
 
-@objc(MLKitBarcodeScannerPlugin)
-public class MLKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate {
+@objc(MlKitBarcodeScannerPlugin)
+public class MlKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate {
     private var call: CAPPluginCall?
     private var settings: ScannerSettings!
     private var player: AVAudioPlayer?

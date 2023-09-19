@@ -1,4 +1,4 @@
-import type { MLKitBarcodeScannerPlugin } from './definitions';
-declare const MLKitBarcodeScanner: MLKitBarcodeScannerPlugin;
+import type { MlKitBarcodeScannerPlugin } from './definitions';
+declare const MlKitBarcodeScanner: MlKitBarcodeScannerPlugin;
 export * from './definitions';
-export { MLKitBarcodeScanner };
+export { MlKitBarcodeScanner };

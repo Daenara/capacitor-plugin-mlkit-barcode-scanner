@@ -4,11 +4,11 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var core = require('@capacitor/core');
 
-const MLKitBarcodeScanner = core.registerPlugin('MLKitBarcodeScanner', {
-    web: () => Promise.resolve().then(function () { return web; }).then(m => new m.MLKitBarcodeScannerWeb()),
+const MlKitBarcodeScanner = core.registerPlugin('MlKitBarcodeScanner', {
+    web: () => Promise.resolve().then(function () { return web; }).then(m => new m.MlKitBarcodeScannerWeb()),
 });
 
-class MLKitBarcodeScannerWeb extends core.WebPlugin {
+class MlKitBarcodeScannerWeb extends core.WebPlugin {
     async scan(_settings) {
         return Promise.reject(new Error("PLATFORM_NOT_SUPPORTED"));
     }
@@ -16,8 +16,8 @@ class MLKitBarcodeScannerWeb extends core.WebPlugin {
 
 var web = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    MLKitBarcodeScannerWeb: MLKitBarcodeScannerWeb
+    MlKitBarcodeScannerWeb: MlKitBarcodeScannerWeb
 });
 
-exports.MLKitBarcodeScanner = MLKitBarcodeScanner;
+exports.MlKitBarcodeScanner = MlKitBarcodeScanner;
 //# sourceMappingURL=plugin.cjs.js.map

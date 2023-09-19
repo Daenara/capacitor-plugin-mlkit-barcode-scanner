@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-plugin-mlkit-barcode-scanner",
+  "name": "capacitor-plugin-ml-kit-barcode-scanner",
   "version": "1.0.5",
   "description": "Google MLKit Vision Barcode Scanner Plugin",
   "main": "dist/plugin.cjs.js",
@@ -11,7 +11,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorPluginMlkitBarcodeScanner.podspec"
+    "CapacitorPluginMlKitBarcodeScanner.podspec"
   ],
   "author": "Nadine Seibel",
   "license": "MIT",
@@ -37,7 +37,7 @@
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
     "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api MLKitBarcodeScannerPlugin --output-readme README.md --output-json dist/docs.json",
+    "docgen": "docgen --api MlKitBarcodeScannerPlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",

@@ -9,19 +9,15 @@ public class MLKitBarcodeScannerPlugin: CAPPlugin, CameraViewControllerDelegate 
     private var player: AVAudioPlayer?
     
     @objc func scan(_ call: CAPPluginCall) {
-        print("ios call received")
         let options = call.jsObjectRepresentation
-        print("options found", options)
         self.call = call
         settings = ScannerSettings(options: options)
-        print("options converted to settings")
         
         DispatchQueue.main.async {
             let cameraViewController = CameraViewController(settings: self.settings)
             cameraViewController.delegate = self
             self.bridge!.viewController!.present(cameraViewController, animated: true)
         }
-        print("scan function finished")
     }
     
     func onComplete(_ result: [DetectedBarcode]) {

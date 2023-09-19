@@ -1,35 +1,35 @@
 import MLKitBarcodeScanning
 
 public enum BarcodeFormat: String, CaseIterable {
-    case CODE_128
-    case CODE_39
-    case CODE_93
-    case CODA_BAR
-    case DATA_MATRIX
-    case EAN_13
-    case EAN_8
+    case Code128
+    case Code39
+    case Code93
+    case CodaBar
+    case DataMatrix
+    case EAN13
+    case EAN8
     case ITF
-    case QR_CODE
-    case UPC_A
-    case UPC_E
-    case DF417
-    case AZTEC
+    case QRCode
+    case UPCA
+    case UPCE
+    case PDF417
+    case Aztec
     
     var asInt: Int {
         switch self {
-        case BarcodeFormat.CODE_128: return MLKitBarcodeScanning.BarcodeFormat.code128.rawValue
-        case BarcodeFormat.CODE_39: return MLKitBarcodeScanning.BarcodeFormat.code39.rawValue
-        case BarcodeFormat.CODE_93: return MLKitBarcodeScanning.BarcodeFormat.code93.rawValue
-        case BarcodeFormat.CODA_BAR: return MLKitBarcodeScanning.BarcodeFormat.codaBar.rawValue
-        case BarcodeFormat.DATA_MATRIX: return MLKitBarcodeScanning.BarcodeFormat.dataMatrix.rawValue
-        case BarcodeFormat.EAN_13: return MLKitBarcodeScanning.BarcodeFormat.EAN13.rawValue
-        case BarcodeFormat.EAN_8: return MLKitBarcodeScanning.BarcodeFormat.EAN8.rawValue
+        case BarcodeFormat.Code128: return MLKitBarcodeScanning.BarcodeFormat.code128.rawValue
+        case BarcodeFormat.Code39: return MLKitBarcodeScanning.BarcodeFormat.code39.rawValue
+        case BarcodeFormat.Code93: return MLKitBarcodeScanning.BarcodeFormat.code93.rawValue
+        case BarcodeFormat.CodaBar: return MLKitBarcodeScanning.BarcodeFormat.codaBar.rawValue
+        case BarcodeFormat.DataMatrix: return MLKitBarcodeScanning.BarcodeFormat.dataMatrix.rawValue
+        case BarcodeFormat.EAN13: return MLKitBarcodeScanning.BarcodeFormat.EAN13.rawValue
+        case BarcodeFormat.EAN8: return MLKitBarcodeScanning.BarcodeFormat.EAN8.rawValue
         case BarcodeFormat.ITF: return MLKitBarcodeScanning.BarcodeFormat.ITF.rawValue
-        case BarcodeFormat.QR_CODE: return MLKitBarcodeScanning.BarcodeFormat.qrCode.rawValue
-        case BarcodeFormat.UPC_A: return MLKitBarcodeScanning.BarcodeFormat.UPCA.rawValue
-        case BarcodeFormat.UPC_E: return MLKitBarcodeScanning.BarcodeFormat.UPCE.rawValue
-        case BarcodeFormat.DF417: return MLKitBarcodeScanning.BarcodeFormat.PDF417.rawValue
-        case BarcodeFormat.AZTEC: return MLKitBarcodeScanning.BarcodeFormat.aztec.rawValue
+        case BarcodeFormat.QRCode: return MLKitBarcodeScanning.BarcodeFormat.qrCode.rawValue
+        case BarcodeFormat.UPCA: return MLKitBarcodeScanning.BarcodeFormat.UPCA.rawValue
+        case BarcodeFormat.UPCE: return MLKitBarcodeScanning.BarcodeFormat.UPCE.rawValue
+        case BarcodeFormat.PDF417: return MLKitBarcodeScanning.BarcodeFormat.PDF417.rawValue
+        case BarcodeFormat.Aztec: return MLKitBarcodeScanning.BarcodeFormat.aztec.rawValue
         }
     }
     

@@ -6,7 +6,10 @@ class BarcodeFormats {
         for value in BarcodeFormat.allCases {
             // when barcodeFormats is empty, all barcodes are valid,
             // otherwise we only want a true if the value was set to true in the settings
-            let format: Bool = barcodeFormats[value.rawValue] as? Bool ?? barcodeFormats.isEmpty
+            var format: Bool = barcodeFormats.isEmpty
+            if let formatValue = barcodeFormats[value.rawValue] {
+                format = formatValue as? Bool ?? barcodeFormats.isEmpty
+            }
             formats[value] = format
         }
     }

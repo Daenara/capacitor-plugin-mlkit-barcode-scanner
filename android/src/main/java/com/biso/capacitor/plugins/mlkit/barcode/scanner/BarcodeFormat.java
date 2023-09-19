@@ -3,19 +3,19 @@ package com.biso.capacitor.plugins.mlkit.barcode.scanner;
 import com.google.mlkit.vision.barcode.common.Barcode;
 
 public enum BarcodeFormat {
-  CODE_128(Barcode.FORMAT_CODE_128),
-  CODE_39(Barcode.FORMAT_CODE_39),
-  CODE_93(Barcode.FORMAT_CODE_93),
-  CODA_BAR(Barcode.FORMAT_CODABAR),
-  DATA_MATRIX(Barcode.FORMAT_DATA_MATRIX),
-  EAN_13(Barcode.FORMAT_EAN_13),
-  EAN_8(Barcode.FORMAT_EAN_8),
+  Code128(Barcode.FORMAT_CODE_128),
+  Code39(Barcode.FORMAT_CODE_39),
+  Code93(Barcode.FORMAT_CODE_93),
+  CodaBar(Barcode.FORMAT_CODABAR),
+  DataMatrix(Barcode.FORMAT_DATA_MATRIX),
+  EAN13(Barcode.FORMAT_EAN_13),
+  EAN8(Barcode.FORMAT_EAN_8),
   ITF(Barcode.FORMAT_ITF),
-  QR_CODE(Barcode.FORMAT_QR_CODE),
-  UPC_A(Barcode.FORMAT_UPC_A),
-  UPC_E(Barcode.FORMAT_UPC_E),
+  QRCode(Barcode.FORMAT_QR_CODE),
+  UPCA(Barcode.FORMAT_UPC_A),
+  UPCE(Barcode.FORMAT_UPC_E),
   PDF417(Barcode.FORMAT_PDF417),
-  AZTEC(Barcode.FORMAT_AZTEC);
+  Aztec(Barcode.FORMAT_AZTEC);
 
   private final int format;
 

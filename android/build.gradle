@@ -23,8 +23,8 @@ android {
         compileSdk project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 33
         minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 26
         targetSdkVersion project.hasProperty('targetSdkVersion') ? rootProject.ext.targetSdkVersion : 33
-        versionCode 106
-        versionName "1.0.6"
+        versionCode 107
+        versionName "1.0.7"
     }
     buildTypes {
         release {

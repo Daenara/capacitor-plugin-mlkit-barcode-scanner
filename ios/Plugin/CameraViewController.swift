@@ -78,17 +78,32 @@ class CameraViewController: UIViewController, BarcodesListener {
     private func setOrientation() {
         previewLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
-        switch UIDevice.current.orientation {
-        case UIDeviceOrientation.portraitUpsideDown:
-            previewLayer.connection?.videoOrientation = .portraitUpsideDown
-        case UIDeviceOrientation.landscapeLeft:
-            previewLayer.connection?.videoOrientation = .landscapeRight
-        case UIDeviceOrientation.landscapeRight:
-            previewLayer.connection?.videoOrientation = .landscapeLeft
-        case UIDeviceOrientation.portrait:
-            previewLayer.connection?.videoOrientation = .portrait
-        default:
-            break
+        if #available(iOS 17.0, *) {
+            switch UIDevice.current.orientation {
+            case UIDeviceOrientation.portraitUpsideDown:
+                previewLayer.connection?.videoRotationAngle = 270
+            case UIDeviceOrientation.landscapeLeft:
+                previewLayer.connection?.videoRotationAngle = 0
+            case UIDeviceOrientation.landscapeRight:
+                previewLayer.connection?.videoRotationAngle = 180
+            case UIDeviceOrientation.portrait:
+                previewLayer.connection?.videoRotationAngle = 90
+            default:
+                break
+            }
+        } else {
+            switch UIDevice.current.orientation {
+            case UIDeviceOrientation.portraitUpsideDown:
+                previewLayer.connection?.videoOrientation = .portraitUpsideDown
+            case UIDeviceOrientation.landscapeLeft:
+                previewLayer.connection?.videoOrientation = .landscapeRight
+            case UIDeviceOrientation.landscapeRight:
+                previewLayer.connection?.videoOrientation = .landscapeLeft
+            case UIDeviceOrientation.portrait:
+                previewLayer.connection?.videoOrientation = .portrait
+            default:
+                break
+            }
         }
     }
     
@@ -112,7 +127,11 @@ class CameraViewController: UIViewController, BarcodesListener {
         previewLayer.frame = view.bounds
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
-        previewLayer.connection?.videoOrientation = .portrait
+        if #available(iOS 17.0, *) {
+            previewLayer.connection?.videoRotationAngle = 90
+        } else {
+            previewLayer.connection?.videoOrientation = .portrait
+        }
         
         let output = AVCaptureVideoDataOutput()
         output.alwaysDiscardsLateVideoFrames = true

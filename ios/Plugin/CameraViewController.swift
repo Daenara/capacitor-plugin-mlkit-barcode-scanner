@@ -206,15 +206,12 @@ class CameraViewController: UIViewController, BarcodesListener {
     }
     
     private func captureDevice() -> AVCaptureDevice? {
-        if #available(iOS 10.0, *) {
-            let discoverySession = AVCaptureDevice.DiscoverySession(
-                deviceTypes: [.builtInWideAngleCamera],
-                mediaType: .video,
-                position: .unspecified
-            )
-            return discoverySession.devices.first { $0.position == .back }
-        }
-        return nil
+        let discoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.builtInWideAngleCamera],
+            mediaType: .video,
+            position: .unspecified
+        )
+        return discoverySession.devices.first { $0.position == .back }
     }
     
     private func startSession() {

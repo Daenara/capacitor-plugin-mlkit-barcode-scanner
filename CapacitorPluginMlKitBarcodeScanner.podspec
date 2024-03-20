@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.source = { :git => package['repository']['url'], :tag => s.version.to_s }
   s.static_framework = true
   s.source_files = 'ios/Plugin/**/*.{swift,h,m,c,cc,mm,cpp}'
-  s.ios.deployment_target  = '17.0'
+  s.ios.deployment_target  = '15.0'
   s.dependency 'Capacitor'
   s.dependency 'GoogleMLKit/BarcodeScanning', '~> 5.0.0'
   s.swift_version = '5.1'

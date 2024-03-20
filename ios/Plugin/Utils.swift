@@ -127,10 +127,8 @@ class Utils {
                 return .landscapeLeft
             case .portraitUpsideDown:
                 return .portraitUpsideDown
-            case .portrait, .unknown:
+            case .portrait, .unknown, .none:
                 return .portrait
-            case .none:
-                fatalError()
             @unknown default:
                 fatalError()
             }

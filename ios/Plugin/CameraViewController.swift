@@ -132,17 +132,20 @@ class CameraViewController: UIViewController, BarcodesListener {
     private func createTorchButton() -> UIButton? {
         if let device = AVCaptureDevice.default(for: AVMediaType.video) {
             if device.hasTorch {
-                let torchButton = UIButton(type: UIButton.ButtonType.custom)
-                torchButton.backgroundColor = UIColor.white
-                torchButton.layer.cornerRadius = 25
-                torchButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-                torchButton.tintColor = UIColor.black
-                torchButton.alpha = 0.5
-                torchButton.addTarget(self, action: #selector(toggleFlash), for: UIControl.Event.touchUpInside)
+                var conf = UIButton.Configuration.filled()
+                conf.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+                conf.background.cornerRadius = 25
+                conf.baseForegroundColor = UIColor.black
+                conf.baseBackgroundColor = UIColor.white
+                
                 if let image = UIImage(named: "flashlight")
                 {
-                    torchButton.setImage(image, for: UIControl.State.normal)
+                    conf.image = image.scalePreservingAspectRatio(targetSize: CGSize(width: 30, height: 30))
                 }
+                let torchButton = UIButton(configuration: conf)
+                torchButton.alpha = 0.5
+                torchButton.addTarget(self, action: #selector(toggleFlash), for: UIControl.Event.touchUpInside)
+
                 view.addSubview(torchButton)
                 torchButton.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
@@ -223,6 +226,35 @@ class CameraViewController: UIViewController, BarcodesListener {
             finishedAlready = true
             delegate?.onComplete(result)
         }
+    }
+}
+
+extension UIImage {
+    func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
+        // Determine the scale factor that preserves aspect ratio
+        let widthRatio = targetSize.width / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        let scaleFactor = min(widthRatio, heightRatio)
+        
+        // Compute the new image size that preserves aspect ratio
+        let scaledImageSize = CGSize(
+            width: size.width * scaleFactor,
+            height: size.height * scaleFactor
+        )
+
+        // Draw and return the resized UIImage
+        let renderer = UIGraphicsImageRenderer(
+            size: scaledImageSize
+        )
+
+        let scaledImage = renderer.image { _ in
+            self.draw(in: CGRect(
+                origin: .zero,
+                size: scaledImageSize
+            ))
+        }
+        return scaledImage
     }
 }
 

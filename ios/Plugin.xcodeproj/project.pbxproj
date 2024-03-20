@@ -55,6 +55,7 @@
 		DD11D05F2A9F7A1000812BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD11D0652A9F83DE00812BD2 /* BarcodeFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeFormats.swift; sourceTree = "<group>"; };
 		DD11D0672A9F854300812BD2 /* BarcodeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeFormat.swift; sourceTree = "<group>"; };
+		DD7A7A3B2BAAE59500674C2E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		DDE64BCF2A9F512E00CAF679 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		DDE64BD12A9F513300CAF679 /* ScannerSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerSettings.swift; sourceTree = "<group>"; };
 		DDE64BD32A9F516400CAF679 /* DetectedBarcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectedBarcode.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
 				DD11D0652A9F83DE00812BD2 /* BarcodeFormats.swift */,
 				DD11D0672A9F854300812BD2 /* BarcodeFormat.swift */,
+				DD7A7A3B2BAAE59500674C2E /* PrivacyInfo.xcprivacy */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";

@@ -2,6 +2,8 @@ package com.biso.capacitor.plugins.mlkit.barcode.scanner;
 
 import com.google.mlkit.vision.barcode.common.Barcode;
 
+// suppress uppercase rule for enum naming (this matches js and swift code)
+@SuppressWarnings("java:S115")
 public enum BarcodeFormat {
   Code128(Barcode.FORMAT_CODE_128),
   Code39(Barcode.FORMAT_CODE_39),

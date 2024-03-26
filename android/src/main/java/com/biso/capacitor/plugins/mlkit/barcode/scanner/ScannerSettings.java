@@ -13,7 +13,7 @@ import java.util.Optional;
 import org.json.JSONObject;
 
 public class ScannerSettings implements Parcelable {
-  private int barcodeFormats = 1234;
+  private int barcodeFormats;
   private String aspectRatio = "1:1";
   private float aspectRatioF = 1;
   private double detectorSize = 0.5;

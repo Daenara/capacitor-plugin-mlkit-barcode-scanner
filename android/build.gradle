@@ -1,6 +1,7 @@
 ext {
-    androidxCameraVersion = project.hasProperty('androidxCameraVersion') ? rootProject.ext.androidxCameraVersion : '1.2.3'
+    androidxCameraVersion = project.hasProperty('androidxCameraVersion') ? rootProject.ext.androidxCameraVersion : '1.3.2'
     mlkitBarcodeScanningVersion = project.hasProperty('mlkitBarcodeScanningVersion') ? rootProject.ext.mlkitBarcodeScanningVersion : '17.2.0'
+    mlKitBarcodeScanningPlayServiceVersion = project.hasProperty('mlKitBarcodeScanningPlayServiceVersion') ? rootProject.ext.mlKitBarcodeScanningPlayServiceVersion : '18.3.0'
     androidxConstraintLayoutVersion = project.hasProperty('androidxConstraintLayoutVersion') ? rootProject.ext.androidxConstraintLayoutVersion : '2.1.4'
     androidxAppCompatVersion = project.hasProperty('androidxAppCompatVersion') ? rootProject.ext.androidxAppCompatVersion : '1.6.1'
 }
@@ -11,7 +12,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.1'
+        classpath 'com.android.tools.build:gradle:8.1.4'
     }
 }
 
@@ -60,5 +61,5 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$androidxCameraVersion"
     implementation "androidx.camera:camera-view:$androidxCameraVersion"
     implementation "com.google.mlkit:barcode-scanning:$mlkitBarcodeScanningVersion"
-    implementation "com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0"
+    implementation "com.google.android.gms:play-services-mlkit-barcode-scanning:$mlKitBarcodeScanningPlayServiceVersion"
 }

@@ -81,51 +81,62 @@ public class MlKitBarcodeScannerPlugin extends Plugin {
       return;
     }
     Intent data = result.getData();
-    if (result.getResultCode() == CommonStatusCodes.SUCCESS) {
-      if (data == null) {
-        call.reject("CANCELED");
-        return;
-      }
-      JSObject detectedBarcodes = new JSObject();
-      try {
-        ArrayList<DetectedBarcode> barcodes;
-        if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
-          barcodes = data.getParcelableArrayListExtra(BARCODES, DetectedBarcode.class);
-        } else {
-          // noinspection deprecation
-          barcodes = data.getParcelableArrayListExtra(BARCODES); // NOSONAR
-        }
-        if (barcodes.isEmpty()) {
-          call.reject("NO_BARCODE");
-          return;
-        }
-        JSONArray resultBarcodes = new JSONArray();
-        for (DetectedBarcode barcode : barcodes) {
-          Log.d("MLKitBarcodeScanner", "Barcode read: " + barcode);
-          resultBarcodes.put(barcode.getAsJson());
-        }
-        detectedBarcodes.put(BARCODES, resultBarcodes);
-      } catch (JSONException e) {
-        call.reject("JSON_EXCEPTION");
-        return;
-      }
 
-      if (scannerSettings.isBeepOnSuccess()) {
-        mediaPlayer.start();
-      }
-
-      if (scannerSettings.isVibrateOnSuccess()) {
-        int duration = 200;
-        vibrator.vibrate(
-            VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE));
-      }
-      call.resolve(detectedBarcodes);
-    } else {
+    if (result.getResultCode() != CommonStatusCodes.SUCCESS) {
       String err = "UNKNOWN_ERROR";
       if (data != null) {
         err = result.getData().getStringExtra("error");
       }
       call.reject(err);
+      return;
+    }
+
+    if (data == null) {
+      call.reject("CANCELED");
+      return;
+    }
+
+    JSObject detectedBarcodes = new JSObject();
+    try {
+      ArrayList<DetectedBarcode> barcodes;
+      if (VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
+        barcodes = data.getParcelableArrayListExtra(BARCODES, DetectedBarcode.class);
+      } else {
+        // noinspection deprecation
+        barcodes = data.getParcelableArrayListExtra(BARCODES); // NOSONAR
+      }
+      if (barcodes.isEmpty()) {
+        call.reject("NO_BARCODE");
+        return;
+      }
+      JSONArray resultBarcodes = new JSONArray();
+      for (DetectedBarcode barcode : barcodes) {
+        Log.d("MLKitBarcodeScanner", "Barcode read: " + barcode);
+        resultBarcodes.put(barcode.getAsJson());
+      }
+      detectedBarcodes.put(BARCODES, resultBarcodes);
+    } catch (JSONException e) {
+      call.reject("JSON_EXCEPTION");
+      return;
+    }
+
+    beepOnSuccess();
+    vibrateOnSuccess();
+
+    call.resolve(detectedBarcodes);
+  }
+
+  private void beepOnSuccess() {
+    if (scannerSettings.isBeepOnSuccess()) {
+      mediaPlayer.start();
+    }
+  }
+
+  private void vibrateOnSuccess() {
+    if (scannerSettings.isVibrateOnSuccess()) {
+      int duration = 200;
+      vibrator.vibrate(
+          VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE));
     }
   }
 }

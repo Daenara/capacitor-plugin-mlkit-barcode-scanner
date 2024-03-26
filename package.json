@@ -48,7 +48,7 @@
     "@capacitor/android": "^5.7.3",
     "@capacitor/docgen": "^0.2.2",
     "@capacitor/ios": "^5.7.3",
-    "@ionic/eslint-config": "https://github.com/mikoloism/eslint-config/tree/patch-1",
+    "@ionic/eslint-config": "https://github.com/bi-so-gmbh/eslint-config.git",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^1.1.2",
     "eslint": "^8.57.0",
@@ -62,10 +62,12 @@
   "peerDependencies": {
     "@capacitor/core": "^5.7.3"
   },
-  "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
   "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
+    "extends": "@ionic/eslint-config/recommended",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
   },
   "capacitor": {
     "ios": {

@@ -3,6 +3,9 @@ A really configurable implementation of googles MLKit Vision barcode scanning AP
 
 This is a capacitor port of [bi-so-gmbh / cordova-plugin-mlkit-barcode-scanner](https://github.com/bi-so-gmbh/cordova-plugin-mlkit-barcode-scanner)
 
+> [!IMPORTANT]  
+> Version 2.x.x and upwards are Capacitor 6 versions. For Capacitor 5 use version 1.x.x
+
 ## Supported Versions
 
 ### iOS
@@ -14,6 +17,13 @@ A version of 1.15.0 or higher is needed. This is because that is the oldest vers
 npm install https://github.com/bi-so-gmbh/capacitor-plugin-mlkit-barcode-scanner.git
 npx cap sync
 ```
+
+## Publish
+To publish to npm use
+```bash
+npm publish --access public
+```
+If this is the first time you publish anything (or you were logged out) use
 
 ### Permissions
 

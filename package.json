@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-plugin-ml-kit-barcode-scanner",
+  "name": "@biso_gmbh/capacitor-plugin-ml-kit-barcode-scanner",
   "version": "2.0.0",
   "type": "module",
   "description": "Google MLKit Vision Barcode Scanner Plugin",
@@ -14,7 +14,11 @@
     "ios/Plugin/",
     "CapacitorPluginMlKitBarcodeScanner.podspec"
   ],
-  "author": "Nadine Seibel",
+  "author": {
+    "name": "Nadine Seibel",
+    "email": "nadine.seibel@bi-so.com",
+    "url": "https://bi-so.de"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

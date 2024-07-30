@@ -12,7 +12,7 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorPluginMlKitBarcodeScanner.podspec"
+    "BisoGmbhCapacitorPluginMlKitBarcodeScanner.podspec"
   ],
   "author": {
     "name": "Nadine Seibel",
